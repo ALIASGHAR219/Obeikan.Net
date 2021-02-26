@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { arrayToTree } from 'performant-array-to-tree';
 import { UserManu } from 'src/app/models/userManu';
-import { KpimasterService } from 'src/app/services/kpimaster.service';
 
 @Component({
   selector: 'app-o3-administration',
@@ -12,7 +11,7 @@ import { KpimasterService } from 'src/app/services/kpimaster.service';
 export class O3AdministrationComponent implements OnInit {
   administrationlist!: any[];
   userMenu!: UserManu[];
-  constructor(private router: Router, private kpiMaster: KpimasterService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     const list = localStorage.getItem('flatMenuItem');

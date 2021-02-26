@@ -5,10 +5,7 @@ import { HomeComponent } from './screens/home/home.component';
 // import { KpimanagmentComponent } from './screens/kpimanagment/kpimanagment.component';
 import { MissionComponent } from './screens/mission/mission.component';
 import { RolelistComponent } from './screens/usermanagement/rolelist/rolelist.component';
-import { RolepermissionsComponent } from './screens/usermanagement/rolepermissions/rolepermissions.component';
-import { UserslistComponent } from './screens/usermanagement/userslist/userslist.component';
 import { VisionComponent } from './screens/vision/vision.component';
-import { YearlyscorecardComponent } from './screens/yearlyscorecard/yearlyscorecard.component';
 import { PublicLayoutComponent } from './shared/public-layout/public-layout.component';
 import { PrivateLayoutComponent } from './shared/private-layout/private-layout.component';
 import { AuthGuard } from './services/auth.guard';
@@ -31,8 +28,6 @@ import { OeeConfigurationComponent } from './O3AdministrationComponents/Manufact
 import { CilConfigurationComponent } from './O3AdministrationComponents/ManufacturingAdminComponents/cil-configuration/cil-configuration.component';
 import { DefectConfigurationComponent } from './O3AdministrationComponents/ManufacturingAdminComponents/defect-configuration/defect-configuration.component';
 import { UsermanagementComponent } from './screens/usermanagement/usermanagement.component';
-import { VerifyCodeComponent } from './screens/authentications/verify-code/verify-code.component';
-import { NewPasswordComponent } from './screens/authentications/new-password/new-password.component';
 import { ProductionDbComponent } from './O3AdministrationComponents/production-db/production-db.component';
 import { AutonomousMaintananceDbComponent } from './O3AdministrationComponents/autonomous-maintanance-db/autonomous-maintanance-db.component';
 import { MachineboardComponent } from './screens/analytics/machineboard/machineboard.component';
@@ -48,8 +43,6 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent },
       {path: 'signup', component: SignUpComponent},
       {path: 'forgotpassword', component: ForgotPasswordComponent},
-      {path: 'verify-code', component: VerifyCodeComponent},
-      {path: 'new-password', component: NewPasswordComponent},
       { path: '', component: LoginComponent }
     ]
   },
@@ -64,13 +57,8 @@ const routes: Routes = [
       { path: 'vision', component: VisionComponent, canActivate: [AuthGuard] },
       { path: 'mission', component: MissionComponent, canActivate: [AuthGuard] },
       { path: 'roles', component: RolelistComponent, canActivate: [AuthGuard] },
-      { path: 'users', component: UserslistComponent, canActivate: [AuthGuard] },
       { path: 'menus', component: MenusComponent, canActivate: [AuthGuard]},
-      { path: 'rolepermissions', component: RolepermissionsComponent, canActivate: [AuthGuard] },
       { path: 'usermanagement', component: UsermanagementComponent, canActivate: [AuthGuard]},
-      // Kpi tree section
-
-      { path: 'yearlyscorecard', component: YearlyscorecardComponent, canActivate: [AuthGuard] },
       // production order Management routes
       {path: 'productionordermanagement', component: ProductionOrderManagementComponent, canActivate: [AuthGuard]},
       {path: 'orderprocessing', component: OrderProcessingComponent, canActivate: [AuthGuard]},

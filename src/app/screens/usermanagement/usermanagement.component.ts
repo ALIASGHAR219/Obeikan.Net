@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserManu } from 'src/app/models/userManu';
 import { ToastrService } from 'ngx-toastr';
-import { KpimasterService } from 'src/app/services/kpimaster.service';
 
 @Component({
   selector: 'app-usermanagement',
@@ -12,7 +11,7 @@ import { KpimasterService } from 'src/app/services/kpimaster.service';
 export class UsermanagementComponent implements OnInit {
   usermanagements!: any[];
   userMenu!: UserManu[];
-  constructor(public router: Router, private toaster: ToastrService, private kpiMaster: KpimasterService) {}
+  constructor(public router: Router, private toaster: ToastrService) {}
 
   ngOnInit(): void {
     const list = localStorage.getItem('flatMenuItem');
@@ -29,31 +28,6 @@ export class UsermanagementComponent implements OnInit {
     // );
     this.usermanagements = [
       // tslint:disable-next-line:max-line-length
-      {
-        title: 'All Users',
-        routerLink: this.getUsers,
-        icon: 'assets/images/manufacturing-admin.svg',
-        disabled: this.kpiMaster.isMenuEnabled(treeData, 'All Users')
-      },
-      {
-        title: 'All Roles',
-        routerLink: this.getRoles,
-        icon: 'assets/images/kpi-admin.svg',
-        disabled: this.kpiMaster.isMenuEnabled(treeData, 'All Roles')
-      },
-      // tslint:disable-next-line:max-line-length
-      {
-        title: 'Roles Permissions',
-        routerLink: this.getRolesPermissions,
-        icon: 'assets/images/quality-admin.svg',
-        disabled: this.kpiMaster.isMenuEnabled(treeData, 'Role Permission')
-      },
-      {
-        title: 'Menus',
-        routerLink: this.getMenuComponent,
-        icon: 'assets/images/quality-admin.svg',
-        // disabled: this.kpiMaster.isMenuEnabled(treeData, 'Role Permission')
-      },
     ];
   }
 

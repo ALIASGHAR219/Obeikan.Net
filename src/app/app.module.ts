@@ -14,10 +14,6 @@ import { MissionComponent } from './screens/mission/mission.component';
 import { VisionComponent } from './screens/vision/vision.component';
 import { HomeComponent } from './screens/home/home.component';
 import { RolelistComponent } from './screens/usermanagement/rolelist/rolelist.component';
-import { UserslistComponent } from './screens/usermanagement/userslist/userslist.component';
-import { RolepermissionsComponent } from './screens/usermanagement/rolepermissions/rolepermissions.component';
-import { KpimasterService } from './services/kpimaster.service';
-import { UsermanagementService } from './services/usermanagement.service';
 import { ToastrModule } from 'ngx-toastr';
 import { TableModule } from 'primeng/table';
 import { LoginComponent } from './screens/authentications/login/login.component';
@@ -54,8 +50,6 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { InputMaskModule } from 'primeng/inputmask';
 import { WelcombannerService } from './services/welcombanner.service';
-
-import { YearlyscorecardComponent } from './screens/yearlyscorecard/yearlyscorecard.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { PrivateLayoutComponent } from './shared/private-layout/private-layout.component';
 import { PublicLayoutComponent } from './shared/public-layout/public-layout.component';
@@ -95,8 +89,6 @@ import { OeeConfigurationComponent } from './O3AdministrationComponents/Manufact
 import { CilConfigurationComponent } from './O3AdministrationComponents/ManufacturingAdminComponents/cil-configuration/cil-configuration.component';
 import { DefectConfigurationComponent } from './O3AdministrationComponents/ManufacturingAdminComponents/defect-configuration/defect-configuration.component';
 import { UsermanagementComponent } from './screens/usermanagement/usermanagement.component';
-import { VerifyCodeComponent } from './screens/authentications/verify-code/verify-code.component';
-import { NewPasswordComponent } from './screens/authentications/new-password/new-password.component';
 import { ProductionDbComponent } from './O3AdministrationComponents/production-db/production-db.component';
 import { O3PercentageGraphComponent } from './O3AdministrationComponents/o3-percentage-graph/o3-percentage-graph.component';
 import { NgxMatDateAdapter, NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
@@ -118,20 +110,15 @@ import { MenusComponent } from './screens/usermanagement/menus/menus.component';
     VisionComponent,
     HomeComponent,
     RolelistComponent,
-    UserslistComponent,
-    RolepermissionsComponent,
     LoginComponent,
     PrimeCellEditorComponent,
     CustomDateComponent,
     BtnCellRenderer,
     BtnCellRendererActualEntry,
-    YearlyscorecardComponent,
     PrivateLayoutComponent,
     PublicLayoutComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyCodeComponent,
-    NewPasswordComponent,
     WelcomeBannerComponent,
     ProductionOrderManagementComponent,
     OrderProcessingComponent,
@@ -219,8 +206,6 @@ import { MenusComponent } from './screens/usermanagement/menus/menus.component';
     NgxMaterialTimepickerModule
   ],
   providers: [
-    KpimasterService,
-    UsermanagementService,
     MessageService,
     AuthenticationService,
     ConfirmationService,

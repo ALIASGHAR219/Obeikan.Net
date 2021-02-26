@@ -1,14 +1,13 @@
-import { Component, OnInit,ViewEncapsulation, ViewChild } from '@angular/core';
-import { FormGroup,FormBuilder,Validators,FormControl } from "@angular/forms";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Menu } from "../../../models/menu";
+import { Menu } from '../../../models/menu';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { UsermanagementService } from "../../../services/usermanagement.service";
 
 
 @Component({
@@ -24,7 +23,7 @@ export class MenusComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   MenuForm!: FormGroup;
-  formMode: boolean = true;
+  formMode = true;
   menuColumns: string[] = [
     'menuId',
     'menuname',
@@ -35,20 +34,16 @@ export class MenusComponent implements OnInit {
   ];
   // tslint:disable-next-line: ban-types
   FormMode!: Boolean;
-  displayMenuRegistration: boolean = false;
+  displayMenuRegistration = false;
   menuId!: number;
   parents!: any[];
   menus!: any[];
-  
-
   menuData!: MatTableDataSource<Menu>;
   constructor(
     private http: HttpClient,
     private toaster: ToastrService,
     private fb: FormBuilder,
-    private userService : UsermanagementService
   ) {
-    
    }
 
   ngOnInit(): void {
@@ -63,23 +58,10 @@ export class MenusComponent implements OnInit {
     this.getMenuData();
   }
 
-  getMenuData(): any {
-    
-    this.userService.getMenuData().subscribe( (data : any) => {
-      
-      this.menuData = new MatTableDataSource<Menu>(data);
-
-      this.parents = data.map( (x: any) => {
-        return x;
-      });
-      
-      this.getPaginator();
-    }, (error: any) => {
-      this.toaster.error('error', error.error.message);
-    })
+  getMenuData(): void {
   }
 
-  openModal() {
+  openModal(): void {
       this.displayMenuRegistration = true;
   }
 
@@ -90,34 +72,13 @@ export class MenusComponent implements OnInit {
     }, 1000);
   }
 
-  getOneMenu(data: any) {
-    const key = {
-      menuId : data
-    }
-    this.userService.updateMenuData(key).subscribe( (data : any) => {
-
-    }, (error) => {
-      this.toaster.error('error', error.error.message);
-    })
+  getOneMenu(data: any): void {
   }
 
   onSubmit(): void {
-    const key = {
-      menuName : this.MenuForm.value.menuname,
-      parentName : this.MenuForm.value.parentname,
-      action: this.MenuForm.value.action,
-      path : this.MenuForm.value.path
-    }
-    debugger;
-    this.userService.addMenuData(key).subscribe((data: any) => {
-      this.toaster.success('Data saved succesfuly');
-     
-    }, (error: any) => {
-      this.toaster.error('Error', error.error.message);
-    })
   }
 
-  updateMenu() {
+  updateMenu(): void {
 
   }
 
@@ -139,6 +100,4 @@ export class MenusComponent implements OnInit {
     //     });
     //   };
     }
-  
-
 }

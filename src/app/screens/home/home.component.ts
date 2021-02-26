@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CardItem } from 'src/app/models/uimodels/cardItem';
 import { UserManu } from 'src/app/models/userManu';
-import { KpimasterService } from 'src/app/services/kpimaster.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,7 +11,7 @@ import { KpimasterService } from 'src/app/services/kpimaster.service';
 export class HomeComponent implements OnInit {
   // treeData!: any[];
   homeCardList!: CardItem[];
-  constructor(public router: Router, private kpiMaster: KpimasterService) {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
     const list = localStorage.getItem('flatMenuItem');

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsermanagementService } from '../../../services/usermanagement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -19,7 +18,6 @@ export class ForgotPasswordComponent implements OnInit {
     private router: Router,
     private toaster: ToastrService,
     private formBuilder: FormBuilder,
-    private kpiService: UsermanagementService
   ) {}
 
   ngOnInit(): void {
@@ -30,19 +28,6 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const key = {
-      email: this.ForgotPassword.value.email,
-    };
-    localStorage.setItem('verifyEmail', this.ForgotPassword.value.email);
-    this.kpiService.forgotPassword(key).subscribe(
-      (data) => {
-        this.toaster.success('Success', 'Email Sent');
-        this.router.navigate(['/verify-code']);
-      },
-      (error) => {
-        this.toaster.error('Error', error.error.message);
-      }
-    );
 
     // stop here if form is invalid
     if (this.ForgotPassword.invalid) {
