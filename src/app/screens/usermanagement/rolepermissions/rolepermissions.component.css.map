@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,AAAA,WAAW,AAAA,WAAW,CAAC;EACxB,MAAM,EAAE,aAAa;EAAE,WAAW;CACnC;;AAED,AAAA,MAAM,AAAA,WAAW,AAAA,WAAW,CAAC;EAC3B,MAAM,EAAE,aAAa;EAAE,WAAW;CACnC;;AAEH,AAAA,iBAAiB,CAAA;EACb,KAAK,EAAE,GAAG;CACb",
+    "sources": [
+        "rolepermissions.component.scss"
+    ],
+    "names": [],
+    "file": "rolepermissions.component.css"
+}

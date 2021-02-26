@@ -1,0 +1,24 @@
+.plant-model-table th.header-min-width {
+  min-width: 95px;
+}
+
+.plant-model-table th.grp-order {
+  min-width: 115px;
+}
+
+.plant-model-table th.created-on {
+  min-width: 180px;
+}
+
+.plant-model-table td.row-action-btns-column {
+  padding: 10px;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+[hidden] {
+  display: none !important;
+}
+/*# sourceMappingURL=plant-model.component.css.map */

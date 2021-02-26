@@ -1,0 +1,141 @@
+<section class="home-content">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/home">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/administration">O3 Administration</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/usermanagement">User Management</a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/rolepermissions">Role Permission</a>
+    </li> 
+  </ul>
+<mat-card>
+  <mat-card-content>
+  
+    <form [formGroup]="roleSearchForm" (ngSubmit)="searchRolePermissions()" class="forms-sample">
+      <div class="p-grid p-fluid">  
+        <div class="p-col-12 p-md-4">        
+            <label >Please Select Group</label>
+            <mat-select  (selectionChange)="getRoles()"  [ngClass]="{
+              'is-invalid':
+              roleSearchForm.get('group')?.errors &&
+              roleSearchForm.get('group')?.touched
+            }" formControlName="group" class="form-control">                
+              <mat-option *ngFor="let group of groups" value="{{group.egId}}">{{group.egDesc}}</mat-option>             
+            </mat-select>
+          <p class="invalid-feedback" *ngIf="
+                  roleSearchForm.get('group')?.touched &&
+                  roleSearchForm.get('group')?.hasError('required')
+                ">
+            * please select Group first
+          </p>
+        </div>
+        <div class="p-col-12 p-md-4">       
+            <label>Please Select Role</label>
+            <mat-select [ngClass]="{
+              'is-invalid':
+              roleSearchForm.get('role')?.errors &&
+              roleSearchForm.get('role')?.touched
+            }" formControlName="role" class="form-control">              
+              <mat-option *ngFor="let role of roles" value="{{role.roleId}}">{{role.name}}</mat-option>             
+            </mat-select>
+            
+          <p class="invalid-feedback" *ngIf="
+                  roleSearchForm.get('role')?.touched &&
+                  roleSearchForm.get('role')?.hasError('required')
+                ">
+            * please select role first
+          </p>
+        </div>
+        <div class="p-col-12 p-md-4">
+              <br/>
+              <button mat-flat-button color="accent" type="submit" [disabled]="!roleSearchForm.valid"  class="btn-accent"> Search </button>
+              <button mat-flat-button color="primary" type="button" mat-flat-button class="btn-primary p-ml-2" [disabled]="!roleSearchForm.valid" (click)="saveData()"> Save</button>
+        </div>
+      </div>
+    </form>
+    
+    <div  #dt1 *ngIf="menulist.length > 0; else nodatablock"  class="mat-elevation-z8 wrapper-box wrapper-box-shadow table-wrapper p-p-1">
+      <p-treeTable [value]="files5" selectionMode="checkbox" [(selection)]="selectedNodes3"
+      (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)" (onHeaderCheckboxToggle)="onHeaderCheckboxToggle($event)">
+        <ng-template pTemplate="caption">
+          <div class="p-d-flex">
+              <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox>
+              <span class="p-ml-2">Select All</span>
+          </div>
+      </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th><p class="header-text"></p>Menu Name</th>
+                <th><p class="header-text"></p>Action</th>
+                <!-- <th style="width: 80px;"><p class="header-text">Select</p></th> -->
+                <th style="width: 80px;"><p class="header-text">Read</p></th>
+                <th style="width: 80px;"><p class="header-text">Create</p></th>
+                <th style="width: 80px;"><p class="header-text">Update</p></th>
+                <th style="width: 80px;"><p class="header-text">Delete</p></th>
+                <th style="width: 80px;"><p class="header-text">Approve</p></th>
+                <th style="width: 80px;"><p class="header-text">Print</p></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr>
+                <td>
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    <p-treeTableCheckbox [value]="rowNode" ></p-treeTableCheckbox>
+    
+                    {{rowData.MenuName}}
+                </td>
+                <td>{{rowData.Action}}</td>
+                <!-- <td><mat-checkbox color="accent" (change)="selectionChange($event, rowData.MenuId)" [checked]="rowData.IsSelect"></mat-checkbox></td> -->
+                <td><mat-checkbox color="accent" (change)="readChange($event, rowData.MenuId)" [checked]="rowData.IsRead"></mat-checkbox></td>
+                <td><mat-checkbox color="accent" (change)="writeChange($event, rowData.MenuId)" [checked]="rowData.IsCreate"></mat-checkbox></td>
+                <td><mat-checkbox color="accent" (change)="updateChange($event, rowData.MenuId)"  [checked]="rowData.IsUpdate"></mat-checkbox></td>
+                <td><mat-checkbox color="accent" (change)="deleteChange($event, rowData.MenuId)" [checked]="rowData.IsDelete"></mat-checkbox></td>
+                <td><mat-checkbox color="accent" (change)="approveChange($event, rowData.MenuId)" [checked]="rowData.IsApprove"></mat-checkbox> </td>
+                <td><mat-checkbox color="accent" (change)="printChange($event, rowData.MenuId)" [checked]="rowData.IsPrint"></mat-checkbox></td>
+              
+            </tr>
+        </ng-template>
+    </p-treeTable>  
+      <!-- <p-table [value]="menulist" class="basic-table" dataKey="id" [rows]="10"   [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-menulist p-datatable-gridlines"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [loading]="loading" [showCurrentPageReport]="true" [globalFilterFields]="['ParentName','MenuName','Actions']">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th><p class="header-text">Select</p></th>
+                  <th ><p class="header-text">Parent Menu</p>	</th>
+                  <th><p class="header-text">Main Menu</p>	</th>               
+                  <th><p class="header-text">Action</p></th>
+                  <th><p class="header-text">Read</p></th>
+                  <th><p class="header-text">Write</p></th>
+                  <th><p class="header-text">Edit</p></th>
+                  <th><p class="header-text">Delete</p></th>
+                  <th><p class="header-text">Approve</p></th>
+                  <th><p class="header-text">Print</p></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-menu>
+              <tr>
+                <td><mat-checkbox color="accent" (change)="selectionChange($event, menu.MenuId)" [checked]="menu.IsSelect"></mat-checkbox></td>
+                <td>{{menu.ParentName}}</td> 
+                <td>{{menu.MenuName}}</td>      
+                  <td>{{menu.Actions}}</td>
+                  <td><mat-checkbox color="accent" (change)="readChange($event, menu.MenuId)" [checked]="menu.IsRead"></mat-checkbox></td>
+                  <td><mat-checkbox color="accent" (change)="writeChange($event, menu.MenuId)" [checked]="menu.IsCreate"></mat-checkbox></td>
+                  <td><mat-checkbox color="accent" (change)="updateChange($event, menu.MenuId)"  [checked]="menu.IsUpdate"></mat-checkbox></td>
+                  <td><mat-checkbox color="accent" (change)="deleteChange($event, menu.MenuId)" [checked]="menu.IsDelete"></mat-checkbox></td>
+                  <td><mat-checkbox color="accent" (change)="approveChange($event, menu.MenuId)" [checked]="menu.IsApprove"></mat-checkbox> </td>
+                  <td><mat-checkbox color="accent" (change)="printChange($event, menu.MenuId)" [checked]="menu.IsPrint"></mat-checkbox></td>
+                </tr>
+          </ng-template>
+      </p-table> -->
+      </div>
+      <ng-template #nodatablock>
+          <p>Please select role first to search menu</p>
+      </ng-template>
+    </mat-card-content>
+</mat-card>
+</section>

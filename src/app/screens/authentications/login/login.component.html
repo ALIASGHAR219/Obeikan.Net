@@ -1,0 +1,79 @@
+<section class="welcome-page">
+  <app-welcome-banner [bgImage]="leftBannerImgurl"></app-welcome-banner>
+  <div class="welcome-content">
+    <div class="welcome-top-bar">
+      <ul class="top-list d-flex justify-content-end align-items-center">
+        <li>
+          <a mat-button class="btn-base">New User?</a>
+        </li>
+        <li>
+          <a mat-flat-button color="accent" routerLink="/signup" class="btn-accent">Sign up</a>
+        </li>
+      </ul>
+    </div>
+    <div class="welcome-form-area">
+      <h2 class="welcome-title">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label class="label" for="email">Email</label>
+          <input [ngClass]="{
+            'is-invalid':
+              loginForm.get('email')?.errors &&
+              loginForm.get('email')?.touched
+          }" type="email" formControlName="email" class="form-control form-control-lg" placeholder="email" required autocomplete="off">
+          <p class="invalid-feedback" *ngIf="
+          loginForm.get('email')?.touched &&
+          loginForm.get('email')?.hasError('required')
+        ">
+            * invalid email
+          </p>
+          <p
+          class="invalid-feedback"
+          *ngIf="
+            loginForm.get('email')?.hasError('email') &&
+            loginForm.get('email')?.touched
+          "
+        >
+          * invalid email
+        </p>
+        </div>
+        <div class="form-group">
+          <label class="label" for="password">Password</label>
+          <input [ngClass]="{
+            'is-invalid':
+              loginForm.get('password')?.errors &&
+              loginForm.get('password')?.touched
+          }" type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password" required autocomplete="off">
+          <p class="invalid-feedback" *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.hasError('required')
+        ">
+            * password is required
+          </p>
+          <p class="invalid-feedback" *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.hasError('minLength')
+        ">
+            * password is atleast 4 characters
+          </p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <mat-checkbox color="accent"> Remember Me </mat-checkbox>
+          <button type="button" mat-button class="btn-base btn-simple" routerLink="/forgotpassword">Forgot Password</button>
+        </div>
+        <button mat-flat-button color="accent" class="btn-accent btn-lg submit-btn" [disabled]="!loginForm.valid">
+          Login
+        </button>
+        <ngx-spinner
+                [fullScreen]="false"
+                bdColor="#fff"
+                size="medium"
+                color="#050a4f"
+                type="ball-clip-rotate-multiple"
+              >
+              <p style="font-size: 20px; color: #050a4f">Authenticating...</p>
+        </ngx-spinner>
+      </form>
+    </div>
+  </div>
+</section>

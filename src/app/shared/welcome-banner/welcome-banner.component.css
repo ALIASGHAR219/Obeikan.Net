@@ -1,0 +1,71 @@
+.welcome-banner {
+  min-width: 900px;
+  max-width: 900px;
+  min-height: calc(100vh - 100px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left top;
+  padding-left: 100px;
+}
+
+@media (max-width: 1600px) {
+  .welcome-banner {
+    min-width: 740px;
+    max-width: 740px;
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .welcome-banner {
+    min-width: 53vw;
+    max-width: 53vw;
+    padding-left: 75px;
+  }
+}
+
+@media (max-width: 991px) {
+  .welcome-banner {
+    display: none;
+  }
+}
+
+.welcome-banner .welcome-banner-content {
+  max-width: 500px;
+  padding: 186px 0 250px 0;
+}
+
+@media (max-width: 1200px) {
+  .welcome-banner .welcome-banner-content {
+    padding: 8vw 0 200px 0;
+  }
+}
+
+.welcome-banner .banner-logo {
+  max-width: 118px;
+}
+
+.welcome-banner .banner-logo > * {
+  width: 100%;
+  display: block;
+}
+
+.welcome-banner .banner-title {
+  font-weight: 500;
+  font-size: 42px;
+  color: #fff;
+}
+
+.welcome-banner .banner-sub-title {
+  font-size: 28px;
+  margin: 25px 0 2px 0;
+}
+
+.welcome-banner .banner-text {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  color: #fff;
+  margin-top: 21px;
+}
+/*# sourceMappingURL=welcome-banner.component.css.map */

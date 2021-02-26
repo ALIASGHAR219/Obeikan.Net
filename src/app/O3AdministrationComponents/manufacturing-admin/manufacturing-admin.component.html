@@ -1,0 +1,80 @@
+<section class="home-content">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/home">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/administration"
+        >O3 Administration</a
+      >
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/manufacturingadmin"
+        >Manufacturing Admin</a
+      >
+    </li>
+  </ul>
+  <h1 class="main-title">Manufacturing Admin</h1>
+  <ul class="menu-card-list">
+    <li class="list-items" *ngFor="let item of manufacturinglist">
+      <a
+        class="list-link"
+        (click)="item.routerLink()"
+        [ngClass]="{ disabled: item.disabled }"
+      >
+        <div class="link-top-box">
+          <div class="box-bg">
+            <svg
+              width="62"
+              height="68"
+              viewBox="0 0 62 68"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M25 2.4641C28.7128 0.320509 33.2872 0.320508 37 2.4641L55.3109 13.0359C59.0237 15.1795 61.3109 19.141 61.3109 23.4282V44.5718C61.3109 48.859 59.0237 52.8205 55.3109 54.9641L37 65.5359C33.2872 67.6795 28.7128 67.6795 25 65.5359L6.68911 54.9641C2.9763 52.8205 0.689112 48.859 0.689112 44.5718V23.4282C0.689112 19.141 2.9763 15.1795 6.68911 13.0359L25 2.4641Z"
+                fill="#10CE9C"
+              />
+            </svg>
+          </div>
+          <div class="top-icon">
+            <img [src]="item.icon" alt="img" />
+          </div>
+        </div>
+        <p class="link-text">{{ item.title }}</p>
+        <div class="link-bottom-icon">
+          <svg
+            width="92"
+            height="90"
+            viewBox="0 0 92 90"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M91.75 19.8272L60.6117 1.87771L60.6095 1.87643C56.2357 -0.624871 50.8652 -0.626576 46.5257 1.87791L7.04595 24.6358L7.04486 24.6364C2.66499 27.1417 0 31.7929 0 36.8358V82.3546C0 85.0234 0.756402 87.5685 2.10894 89.75H3.91591C2.37415 87.636 1.5 85.0649 1.5 82.3546V36.8358C1.5 32.324 3.88287 28.1727 7.79061 25.9379L7.79284 25.9366L47.2752 3.17726L47.2755 3.17707C51.1486 0.941774 55.9495 0.93988 59.8638 3.17797L59.8648 3.17854L91.75 21.5586V19.8272ZM67.6178 89.75C78.9857 84.4572 86.8692 72.9422 86.8692 59.5952C86.8692 41.2358 71.9525 26.3426 53.5689 26.3426C35.1852 26.3426 20.2686 41.2358 20.2686 59.5952C20.2686 72.9422 28.1521 84.4572 39.5199 89.75H43.585C30.9156 85.5672 21.7686 73.6425 21.7686 59.5952C21.7686 42.0663 36.0116 27.8426 53.5689 27.8426C71.1262 27.8426 85.3692 42.0663 85.3692 59.5952C85.3692 73.6425 76.2222 85.5672 63.5527 89.75H67.6178Z"
+              fill="#10CE9C"
+            />
+            <path
+              class="arrow-box"
+              d="M69 68C69 72.4183 65.4183 76 61 76L47 76C42.5817 76 39 72.4183 39 68L39 54C39 49.5817 42.5817 46 47 46L61 46C65.4183 46 69 49.5817 69 54L69 68Z"
+              fill="white"
+            />
+            <path
+              class="arrow"
+              d="M53.9967 54L52.8217 55.175L57.4717 59.8333H47.3301V61.5H57.4717L52.8217 66.1583L53.9967 67.3333L60.6634 60.6667L53.9967 54Z"
+              fill="#10CE9C"
+            />
+          </svg>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+
+
+
+
+

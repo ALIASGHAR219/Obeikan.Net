@@ -1,0 +1,181 @@
+.main-top-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+@media (max-width: 991px) {
+  .main-top-bar {
+    margin-bottom: 65px;
+  }
+}
+
+.main-top-bar .top-bar-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
+  margin-right: 25px;
+}
+
+.main-top-bar .top-bar-logo {
+  margin-right: 25px;
+}
+
+@media (max-width: 991px) {
+  .main-top-bar .top-bar-logo {
+    margin: 0 15px 0 20px;
+  }
+}
+
+.main-top-bar .top-bar-logo img {
+  display: block;
+}
+
+.main-top-bar .navbar-toggler-mob {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .main-top-bar .navbar-toggler-mob {
+    display: block;
+  }
+}
+
+.main-top-bar .search-form-btn-mob {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .main-top-bar .search-form-btn-mob {
+    display: block;
+  }
+}
+
+.main-top-bar .search-form {
+  position: relative;
+}
+
+@media (max-width: 991px) {
+  .main-top-bar .search-form {
+    position: fixed;
+    top: 95px;
+    left: 30px;
+    right: 30px;
+    opacity: 0;
+    visibility: visible;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  .main-top-bar .search-form.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.main-top-bar .search-form .form-control {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 12px;
+  padding: 13px 25px 13px 45px;
+  border-radius: 35px;
+  min-width: 500px;
+}
+
+@media (max-width: 1200px) {
+  .main-top-bar .search-form .form-control {
+    min-width: 350px;
+  }
+}
+
+.main-top-bar .search-form .form-control::-webkit-input-placeholder {
+  color: #c2cadb;
+}
+
+.main-top-bar .search-form .form-control:-moz-placeholder {
+  color: #c2cadb;
+}
+
+.main-top-bar .search-form .form-control::-moz-placeholder {
+  color: #c2cadb;
+}
+
+.main-top-bar .search-form .form-control:-ms-input-placeholder {
+  color: #c2cadb;
+}
+
+.main-top-bar .search-form .search-btn {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.main-top-bar .top-bar-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-top-bar .top-bar-right .mat-icon-button {
+  margin-left: 5px;
+}
+
+.main-top-bar .top-bar-right .notification-btn {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.main-top-bar .top-bar-right .notification-btn .notification-dot {
+  display: block;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.main-top-bar .top-bar-right .notification-btn .notification-dot svg {
+  display: block;
+}
+
+.main-top-bar .top-bar-right .notification-btn.has-notification .notification-dot {
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-top-bar .top-bar-right .profile-btn {
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+}
+
+.main-top-bar .top-bar-right .profile-btn img {
+  width: 100%;
+  display: block;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=navbar.component.css.map */

@@ -1,0 +1,167 @@
+<div class="machine-parameter-content" id="process-order">
+  <div class="content-top-box ">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/home">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/analytics">Analytics</a>
+      </li>
+    </ul>
+    <div class="tab-content-top-box">
+      <h1 class="main-title">Machine Board</h1>
+    </div>
+  </div>
+  <form [formGroup]="searchForm">
+    <div class="wrapper-box wrapper-box-shadow table-wrapper">
+      <div class="content-top-box-content">
+        <h1 class="content-title">Process Order</h1>
+      </div>
+      <div class="content-top-row">
+        <mat-form-field appearence="fill"
+          class="top-row-first-filed-item">
+          <mat-label>Group</mat-label>
+          <mat-select formControlName="groupList" name="Group">
+            <mat-option *ngFor="let groupName of groupList" [value]="groupName.value">
+              {{groupName.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearence="fill"
+          class="top-row-first-filed-item">
+          <mat-label>Line</mat-label>
+          <mat-select formControlName="lineList" name="Line">
+            <mat-option *ngFor="let listName of lineList" [value]="listName.value">
+              {{listName.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button class="search-btn">
+          <img src="assets/images/search-icon.svg" alt="">
+        </button>
+        <mat-form-field appearence="fill"
+          class="top-row-first-filed-item">
+          <mat-label>Start Date</mat-label>
+          <input matInput name="startDate">
+        </mat-form-field>
+        <mat-form-field appearence="fill"
+          class="top-row-first-filed-item">
+          <mat-label>End Date</mat-label>
+          <input matInput name="EndDate">
+        </mat-form-field>
+        <button mat-flat-button color="accent" class="btn-accent-big">Apply Filter</button>
+      </div>
+      <div class="card-wrapper-list">
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 41</p>
+            <img src="assets/images/graphs/analytics.svg" alt="">
+            <o3-percentage-graph [barProperties]="barOptionsBobst41"></o3-percentage-graph>
+            <p class="graph-title">MEDIUM</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 55</p>
+            <img src="assets/images/graphs/analytics.svg" alt="">
+            <o3-percentage-graph [barProperties]="barOptionsBobst55"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 81</p>
+            <img src="assets/images/graphs/analytics.svg" alt="">
+            <o3-percentage-graph [barProperties]="barOptionsBobst81"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 21</p>
+            <img src="assets/images/graphs/analytics.svg" alt="">
+            <o3-percentage-graph [barProperties]="barOptionsBobst21"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="90" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">90%</p></div>
+            <mat-progress-bar mode="determinate" value="58" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">58%</p></div>
+            <mat-progress-bar mode="determinate" value="70" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">70%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 41</p>
+            <img src="assets/images/graphs/analytics.svg" alt="">
+            <o3-percentage-graph [barProperties]="barOptionsBobst41"></o3-percentage-graph>
+            <p class="graph-title">MEDIUM</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 55</p>
+            <o3-percentage-graph [barProperties]="barOptionsBobst55"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 81</p>
+            <o3-percentage-graph [barProperties]="barOptionsBobst81"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="50" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">50%</p></div>
+            <mat-progress-bar mode="determinate" value="18" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">18%</p></div>
+            <mat-progress-bar mode="determinate" value="10" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">10%</p></div>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card">
+            <p class="card-title">Bobst 21</p>
+            <o3-percentage-graph [barProperties]="barOptionsBobst21"></o3-percentage-graph>
+            <p class="graph-title">LOW</p>
+            <mat-progress-bar mode="determinate" value="90" [color]="colorAvailability"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Availability</p> <p class="progress-bar-title">90%</p></div>
+            <mat-progress-bar mode="determinate" value="58" [color]="colorPerformance"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Performance</p> <p class="progress-bar-title">58%</p></div>
+            <mat-progress-bar mode="determinate" value="70" [color]="colorQuality"></mat-progress-bar>
+            <div class="d-flex justify-content-between"> <p class="progress-bar-title">Quality</p> <p class="progress-bar-title">70%</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

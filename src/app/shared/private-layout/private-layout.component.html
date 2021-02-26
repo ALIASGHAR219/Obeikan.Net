@@ -1,0 +1,12 @@
+
+<main class="main-layout">
+  <app-sidebar *ngIf="loggedIn()" [isMobMenuActive]="isMobMenuActive"
+    (menuChangeEvent)="onMenuTogglerChange($event)"></app-sidebar>
+  <div class="content-area" [ngClass]="{'logged-in': islogin, 'menu-collapsed': !isMenuOpen}">
+    <div class="main-navbar-close-layer" [ngClass]="{'mob-menu-active': isMobMenuActive}" (click)="closeMobMenu()">
+    </div>
+    <app-navbar *ngIf="loggedIn()" [isMenuOpen]="isMenuOpen" (mobMenuTogglerEvent)="onMobMenuChange($event)">
+    </app-navbar>
+    <router-outlet></router-outlet>
+  </div>
+</main>

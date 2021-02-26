@@ -1,0 +1,353 @@
+<section class="home-content">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/home">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/administration">O3 Administration</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/usermanagement">User Management</a>
+      </li> 
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/menus">Menus</a>
+      </li> 
+    </ul>
+  <mat-card class="p-mt-0 p-pt-0">
+    <div class="p-d-flex p-jc-between p-ai-center">
+        <mat-card-title class="p-ml-2">Menus</mat-card-title>
+        <div class="">
+          <mat-form-field>
+            <input matInput placeholder="Search...." autocomplete="off">
+          </mat-form-field>
+        </div>
+        <div class="">
+          <button mat-flat-button class="btn-add-item" (click)="openModal()" pTooltip="Add Menu" tooltipPosition="top">
+            <span class="btn-icon">
+              <svg width="40" height="36" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.18143 5.4235H5.6525V8.9235H4.47619V5.4235H0.947266V4.25684H4.47619V0.756836H5.6525V4.25684H9.18143V5.4235Z"
+                  fill="white" />
+              </svg>
+            </span>
+          </button>
+        
+        </div>            
+    </div>
+    <mat-card-content>
+      <ngx-spinner
+          [fullScreen]="false"
+          bdColor="#fff"
+          size="medium"
+          color="#050a4f"
+          type="ball-clip-rotate-multiple"
+          >
+          <p style="font-size: 20px; color: #050a4f">Fetching User Data...</p>
+    </ngx-spinner>
+    <div class="wrapper-box wrapper-box-shadow table-wrapper p-p-1">
+      <table mat-table [dataSource]="menuData" class="basic-table plant-model-table" matSort>
+  
+        <!-- groupID Column -->
+        <ng-container matColumnDef="menuId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-min-width">
+            <p class="header-text">Menu ID</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.menuId}} </td>
+        </ng-container>
+  
+        <!-- groupDescription Column -->
+        <ng-container matColumnDef="menuname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <p class="header-text">Menu Name</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.menuname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <p class="header-text">Action</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+        </ng-container>
+        <ng-container matColumnDef="path">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <p class="header-text">Path</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.path}} </td>
+        </ng-container>
+        <ng-container matColumnDef="parentname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <p class="header-text">Parent Name</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.parentname}} </td>
+        </ng-container>
+  
+        <!-- remarks Column -->
+
+        <!-- <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <p class="header-text">Role</p>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>   -->
+
+        <!-- plantModelActions Column -->
+        <ng-container matColumnDef="menuActions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element" class="row-action-btns-column">
+            <div class="row-action-btns">
+              <button mat-icon-button class="edit-btn" aria-label="Edit User" 
+              (click)="getOneMenu(element.menuId)" pTooltip="Edit User" tooltipPosition="top">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0.75 9.06298V11.2505H2.9375L9.38917 4.79881L7.20167 2.61131L0.75 9.06298ZM11.0808 3.10715C11.3083 2.87965 11.3083 2.51215 11.0808 2.28465L9.71583 0.919648C9.48833 0.692148 9.12083 0.692148 8.89333 0.919648L7.82583 1.98715L10.0133 4.17465L11.0808 3.10715Z"
+                    fill="white" />
+                </svg>
+              </button>
+              <button mat-icon-button class="node-control-btn node-delete" aria-label="delete item"
+                 pTooltip="Delete User" tooltipPosition="top">
+                <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M7.35547 0.9375H5.60547L5.10547 0.4375H2.60547L2.10547 0.9375H0.355469V1.9375H7.35547V0.9375ZM0.855469 8.4375C0.855469 8.70272 0.960826 8.95707 1.14836 9.14461C1.3359 9.33214 1.59025 9.4375 1.85547 9.4375H5.85547C6.12069 9.4375 6.37504 9.33214 6.56258 9.14461C6.75011 8.95707 6.85547 8.70272 6.85547 8.4375V2.4375H0.855469V8.4375Z"
+                    fill="white" />
+                </svg>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="menuColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: menuColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching</td>
+        </tr>
+      </table>  
+      <mat-paginator 
+        class="basic-paginataor" 
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+    </mat-card-content>    
+  </mat-card>
+  </section>
+  <!-- <p-dialog header="Edit User Permissions"  [modal]="true" [style]="{width: '90vw'}" [maximizable]="true" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
+  <form [formGroup]="userPermissionForm" (ngSubmit)="searchUserPermissions()" class="forms-sample">
+    <p-treeTable [value]="files5" selectionMode="checkbox" [(selection)]="selectedNodePermission"
+    (onNodeSelect)="nodeSelect($event)" (onNodeUnselect)="nodeUnselect($event)" (onHeaderCheckboxToggle)="onHeaderCheckboxToggle($event)">
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+            <p-treeTableHeaderCheckbox></p-treeTableHeaderCheckbox>
+            <span class="p-ml-2">Select All</span>
+        </div>
+    </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Menu Name</th>
+              <th>Action</th>
+              <th style="width: 80px;">IsSelect</th>
+              <th style="width: 80px;">IsRead</th>
+              <th style="width: 80px;">IsCreate</th>
+              <th style="width: 80px;">IsUpdate</th>
+              <th style="width: 80px;">IsDelete</th>
+              <th style="width: 80px;">IsApprove</th>
+              <th style="width: 80px;">IsPrint</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+          <tr>
+              <td>
+                  <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                  <p-treeTableCheckbox [value]="rowNode" ></p-treeTableCheckbox>
+  
+                  {{rowData.MenuName}}
+              </td>
+              <td>{{rowData.Action}}</td>
+              <td><mat-checkbox color="accent" (change)="selectionChange($event, rowData.MenuId)" [checked]="rowData.IsSelect"></mat-checkbox></td>
+              <td><mat-checkbox color="accent" (change)="readChange($event, rowData.MenuId)" [checked]="rowData.IsRead"></mat-checkbox></td>
+              <td><mat-checkbox color="accent" (change)="writeChange($event, rowData.MenuId)" [checked]="rowData.IsCreate"></mat-checkbox></td>
+              <td><mat-checkbox color="accent" (change)="updateChange($event, rowData.MenuId)"  [checked]="rowData.IsUpdate"></mat-checkbox></td>
+              <td><mat-checkbox color="accent" (change)="deleteChange($event, rowData.MenuId)" [checked]="rowData.IsDelete"></mat-checkbox></td>
+              <td><mat-checkbox color="accent" (change)="approveChange($event, rowData.MenuId)" [checked]="rowData.IsApprove"></mat-checkbox> </td>
+              <td><mat-checkbox color="accent" (change)="printChange($event, rowData.MenuId)" [checked]="rowData.IsPrint"></mat-checkbox></td>
+            
+          </tr>
+      </ng-template>
+  </p-treeTable>
+  </form>
+      <ng-template pTemplate="footer">
+        <button mat-flat-button color="accent" type="button" class="btn-accent" [disabled]="userPersmissions === undefined" (click)="saveData()">Update</button>
+  
+       
+      </ng-template>
+  </p-dialog> -->
+    <p-dialog [contentStyle]="{'overflow': 'visible'}" [closable]="true" [(visible)]="displayMenuRegistration" [modal]="true" [style]="{width: '70vw'}" [maximizable]="true" [baseZIndex]="10000"
+      [draggable]="false" [resizable]="false">
+      <br/>
+      <form [formGroup]="MenuForm" (ngSubmit)="formMode ? onSubmit() : updateMenu()" class="forms-sample">
+      <div class="p-grid p-fluid">   
+          <div class="p-field p-col-3">
+            <label class="required">Please Select Menu Name</label>
+            <input  [ngClass]="{
+                'is-invalid':
+                MenuForm.get('menuname')?.errors &&
+                MenuForm.get('menuname')?.touched
+              }" type="text" class="form-control" formControlName="menuname" pInputText  placeholder="Enter Menu Name">
+              <p class="invalid-feedback" *ngIf="
+              MenuForm.get('menuname')?.touched &&
+              MenuForm.get('menuname')?.hasError('required')">
+                *Menu Name is required!
+              </p>
+          </div>
+          
+          <div class="p-field p-col-3">
+            <label class="required">Please Select Group</label>
+              <p-dropdown [ngClass]="{
+                'is-invalid':
+                MenuForm.get('parentname')?.errors &&
+                MenuForm.get('parentname')?.touched
+              }" [options]="parents" formControlName="parentname" 
+              placeholder="Select a Parent" optionLabel="menuname" 
+              [showClear]="true">
+          </p-dropdown>
+            <p class="invalid-feedback" *ngIf="
+            MenuForm.get('parentname')?.touched &&
+            MenuForm.get('parentname')?.hasError('required')
+          ">
+              * please select group 
+            </p>
+          </div>
+          <div class="p-field p-col-3">
+            <label class="required">Action</label>
+            <input  [ngClass]="{
+              'is-invalid':
+              MenuForm.get('action')?.errors &&
+              MenuForm.get('action')?.touched
+            }" type="text" class="form-control" formControlName="action" pInputText  placeholder="Enter Action">
+            <p class="invalid-feedback" *ngIf="
+            MenuForm.get('action')?.touched &&
+            MenuForm.get('action')?.hasError('required')">
+              *Action is required!
+            </p>
+          </div>
+          <div class="p-field p-col-3">
+            <label class="required">Path</label>
+            <input [ngClass]="{
+              'is-invalid':
+              MenuForm.get('path')?.errors &&
+              MenuForm.get('path')?.touched
+            }" type="text" class="form-control" formControlName="path"  pInputText placeholder="Enter Path">
+            <p class="invalid-feedback" *ngIf="
+            MenuForm.get('path')?.touched &&
+            MenuForm.get('path')?.hasError('required')">
+                * first name is required!
+            </p>
+          </div>
+          <!-- <div class="p-field p-col-3">
+
+
+            <label class="required">Last Name</label>
+            <input [ngClass]="{
+              'is-invalid':
+              MenuForm.get('lastName')?.errors &&
+              MenuForm.get('lastName')?.touched
+            }" type="text" class="form-control" formControlName="lastName"  pInputText placeholder="enter last name">
+            <p class="invalid-feedback" *ngIf="
+            MenuForm.get('lastName')?.touched &&
+            MenuForm.get('lastName')?.hasError('required')">
+              * last name is required!
+            </p>
+          </div>
+          <div class="p-field p-col-3">
+            <label class="required">Phone Number</label>
+            <input [ngClass]="{
+              'is-invalid':
+              MenuForm.get('phoneNumber')?.errors &&
+              MenuForm.get('phoneNumber')?.touched
+            }" type="number" min="11" class="form-control" formControlName="phoneNumber"  pInputText placeholder="enter phone number">
+            <p class="invalid-feedback" *ngIf="
+            MenuForm.get('phoneNumber')?.touched &&
+            MenuForm.get('phoneNumber')?.hasError('required')">
+                * phone number is required!
+            </p>
+          </div>
+          <div class="p-field p-col-3">
+            <label class="required">Email address</label>
+                    <input [ngClass]="{
+                      'is-invalid':
+                      MenuForm.get('email')?.errors &&
+                      MenuForm.get('email')?.touched
+                    }" type="email" class="form-control" formControlName="email"  pInputText placeholder="enter email address">
+                    <p class="invalid-feedback" *ngIf="
+                    MenuForm.get('email')?.touched &&
+                    MenuForm.get('email')?.hasError('required')
+                  ">
+                      * invalid email
+                    </p>
+                    <p
+                      class="invalid-feedback"
+                      *ngIf="
+                      MenuForm.get('email')?.hasError('email') &&
+                      MenuForm.get('email')?.touched
+                      "
+                    >
+                      * invalid email
+                    </p>
+          </div> -->
+          <!-- <div class="p-field p-col-3">  <label>Image</label>
+            <input  pInputText
+                formControlName="path"  accept="image/x-png,image/gif,image/jpeg"
+                id="file" 
+                type="file" 
+                class="form-control"
+                (change)="onFileChange($event)"
+                >
+               </div> -->
+          <!-- <div class="p-field p-col-3"><img [src]="imageSrc" *ngIf="imageSrc" style="height: 100px; width:250px"> </div> -->
+          
+  
+      </div>
+      <button style="float: right;" mat-flat-button color="accent" type="submit" [disabled]="!MenuForm.valid"  class="btn-accent"> Register </button>
+  
+     </form>
+  </p-dialog>
+ 
+    <p-dialog header="Add Machine" [closable]="true" [style]="{width: '70vw'}" [baseZIndex]="10000" [maximizable]="true" [modal]="true" 
+      [resizable]="true" [contentStyle]="{height: '700px'}" styleClass="p-fluid">
+    <br />
+    
+    <!-- <form [formGroup]="machineForm" (ngSubmit)="userMachineAccess()" class="forms-sample">
+      <div class="tree-controls">
+        <button mat-flat-button class="btn-tree-control" (click)="collapseAll()" type="button">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#824AED" />
+              <path
+                d="M11.0118 12.9848C10.9331 12.8973 10.8218 12.8402 10.6947 12.8398L7.10183 12.8348C6.86392 12.8344 6.67141 13.0269 6.67183 13.2648C6.67224 13.5027 6.94974 13.7702 7.06891 13.8894L7.97764 14.7982L5.33307 17.4173L6.58307 18.6673L9.18891 16.0098L10.0976 16.9186C10.2943 17.1152 10.4939 17.3244 10.7318 17.3248C10.9697 17.3252 11.1622 17.1327 11.1618 16.8948L11.1568 13.3019C11.1564 13.1748 11.0993 13.0636 11.0118 12.9848ZM16.0764 9.1569L18.6664 6.58398L17.4164 5.33398L14.8443 7.9169L13.9201 6.9869C13.7201 6.78564 13.5172 6.57148 13.2756 6.57107C13.0335 6.57065 12.8381 6.76773 12.8381 7.01106L12.843 10.6886C12.843 10.8186 12.9014 10.9323 12.9906 11.0131C13.071 11.1027 13.1839 11.161 13.3131 11.1615L16.9672 11.1665C17.2089 11.1669 17.4047 10.9698 17.4047 10.7265C17.4043 10.4831 17.1222 10.209 17.001 10.0873L16.0764 9.1569Z"
+                fill="white" />
+            </svg>
+          </div>
+          <p class="btn-text">Collapse All</p>
+        </button>
+        <button mat-flat-button class="btn-tree-control" (click)="expandAll()" type="button">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#3AAFE4" />
+              <path
+                d="M11.0118 12.9848C10.9331 12.8973 10.8218 12.8402 10.6947 12.8398L7.10183 12.8348C6.86392 12.8344 6.67141 13.0269 6.67183 13.2648C6.67224 13.5027 6.94974 13.7702 7.06891 13.8894L7.97764 14.7982L5.33307 17.4173L6.58307 18.6673L9.18891 16.0098L10.0976 16.9186C10.2943 17.1152 10.4939 17.3244 10.7318 17.3248C10.9697 17.3252 11.1622 17.1327 11.1618 16.8948L11.1568 13.3019C11.1564 13.1748 11.0993 13.0636 11.0118 12.9848ZM16.0764 9.1569L18.6664 6.58398L17.4164 5.33398L14.8443 7.9169L13.9201 6.9869C13.7201 6.78564 13.5172 6.57148 13.2756 6.57107C13.0335 6.57065 12.8381 6.76773 12.8381 7.01106L12.843 10.6886C12.843 10.8186 12.9014 10.9323 12.9906 11.0131C13.071 11.1027 13.1839 11.161 13.3131 11.1615L16.9672 11.1665C17.2089 11.1669 17.4047 10.9698 17.4047 10.7265C17.4043 10.4831 17.1222 10.209 17.001 10.0873L16.0764 9.1569Z"
+                fill="white" />
+            </svg>
+          </div>
+          <p class="btn-text">Expand All</p>
+        </button>
+      </div>
+      <p-tree [value]="machineTree" selectionMode="checkbox" layout="vertical" [(selection)]="selectedMachine" scrollHeight="flex"></p-tree>
+    
+    <button style="float: right;" mat-flat-button color="accent" type="submit" [disabled]="!machineForm.valid"
+    class="btn-accent"> Save </button>
+    </form>  -->
+   
+  </p-dialog>
+  <!-- End Machine Dialog -->
+  
+  

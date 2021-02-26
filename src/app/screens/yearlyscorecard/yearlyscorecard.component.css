@@ -1,0 +1,26 @@
+.required:after {
+  content: " *";
+  color: red;
+}
+
+:host ::ng-deep .ag-header-cell {
+  background-color: #ccffcc !important;
+}
+
+.mat-card-header {
+  background-color: #0F0FD1 !important;
+  padding: 5px !important;
+}
+
+.mat-card {
+  padding: 0 !important;
+}
+
+.mat-card-content {
+  padding: 5px !important;
+}
+
+.mat-card-header .mat-card-title {
+  color: white;
+}
+/*# sourceMappingURL=yearlyscorecard.component.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "private-layout.component.scss"
+    ],
+    "names": [],
+    "file": "private-layout.component.css"
+}

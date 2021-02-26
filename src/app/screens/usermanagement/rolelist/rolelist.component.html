@@ -1,0 +1,160 @@
+<section class="home-content">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/home">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/administration">O3 Administration</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/usermanagement">User Management</a>
+    </li> 
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" routerLink="/roles">Roles</a>
+    </li> 
+  </ul>
+<mat-card class="p-mt-0 p-pt-0">
+  <div class="p-d-flex p-jc-between p-ai-center">
+      <mat-card-title class="p-ml-2">Define Roles</mat-card-title>
+      <div class="">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search...." autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div class="">
+        <button mat-flat-button class="btn-add-item" (click)="openModal(rolemodel)" pTooltip="Add Role" tooltipPosition="top">
+          <span class="btn-icon">
+            <svg width="40" height="36" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.18143 5.4235H5.6525V8.9235H4.47619V5.4235H0.947266V4.25684H4.47619V0.756836H5.6525V4.25684H9.18143V5.4235Z"
+                fill="white" />
+            </svg>
+          </span>
+        </button>
+      </div>            
+  </div>
+  <mat-card-content>
+    <ngx-spinner
+        [fullScreen]="false"
+        bdColor="#fff"
+        size="medium"
+        color="#050a4f"
+        type="ball-clip-rotate-multiple"
+        >
+        <p style="font-size: 20px; color: #050a4f">Fetching Roles Data...</p>
+  </ngx-spinner>
+  <div class="wrapper-box wrapper-box-shadow table-wrapper p-p-1">
+    <table mat-table [dataSource]="roleData" class="basic-table plant-model-table" matSort>
+
+      <!-- groupID Column -->
+      <ng-container matColumnDef="roleId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="header-min-width">
+          <p class="header-text">Role ID</p>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.roleId}} </td>
+      </ng-container>
+
+      <!-- groupDescription Column -->
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="header-text">Group</p>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.group}} </td>
+      </ng-container>
+
+      <!-- remarks Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <p class="header-text">Role</p>
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>  
+      <!-- plantModelActions Column -->
+      <ng-container matColumnDef="roleActions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="row-action-btns-column">
+          <div class="row-action-btns">
+            <button mat-icon-button class="edit-btn" aria-label="Edit Row" 
+            (click)="getRole(element.roleId, rolemodel)" pTooltip="Edit Role" tooltipPosition="top">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M0.75 9.06298V11.2505H2.9375L9.38917 4.79881L7.20167 2.61131L0.75 9.06298ZM11.0808 3.10715C11.3083 2.87965 11.3083 2.51215 11.0808 2.28465L9.71583 0.919648C9.48833 0.692148 9.12083 0.692148 8.89333 0.919648L7.82583 1.98715L10.0133 4.17465L11.0808 3.10715Z"
+                  fill="white" />
+              </svg>
+            </button>
+            <button mat-icon-button class="node-control-btn node-delete" aria-label="delete item"
+                  (click)="delete(element.roleId)" pTooltip="Delete Role" tooltipPosition="top">
+                  <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M7.35547 0.9375H5.60547L5.10547 0.4375H2.60547L2.10547 0.9375H0.355469V1.9375H7.35547V0.9375ZM0.855469 8.4375C0.855469 8.70272 0.960826 8.95707 1.14836 9.14461C1.3359 9.33214 1.59025 9.4375 1.85547 9.4375H5.85547C6.12069 9.4375 6.37504 9.33214 6.56258 9.14461C6.75011 8.95707 6.85547 8.70272 6.85547 8.4375V2.4375H0.855469V8.4375Z"
+                      fill="white" />
+                  </svg>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="roleColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: roleColumns;"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching</td>
+      </tr>
+    </table>  
+    <mat-paginator 
+      class="basic-paginataor" 
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons>
+    </mat-paginator>
+  </div>
+  </mat-card-content>    
+</mat-card>
+</section>
+<ng-template #rolemodel>
+  <mat-dialog>
+    <form [formGroup]="roleForm" (ngSubmit)="formMode ? submitRole() : updateRole()">
+      <h1 mat-dialog-title>{{formMode ? 'Define' : 'Update'}} Role</h1>
+      <div mat-dialog-content>
+          <div class="p-grid p-fluid">
+            <div class="p-col-12">
+              <mat-form-field [ngClass]="{
+                'is-invalid':
+                  roleForm.get('group')?.errors &&
+                  roleForm.get('group')?.touched
+                }" style="width: 100%;" appearance="fill" class="field-fill">
+                <mat-label>Group</mat-label>
+                <mat-select formControlName="group" [disabled]="true">                
+                  <mat-option *ngFor="let group of groups" [value]="group.egId">{{group.egDesc}}</mat-option>             
+                </mat-select>
+              </mat-form-field>
+              <p  class="invalid-feedback" *ngIf="
+                roleForm.get('group')?.touched &&
+                roleForm.get('group')?.hasError('required')
+              ">
+              * please select group
+              </p>
+            </div>
+            <div class="p-col-12">
+              <mat-form-field  [ngClass]="{
+                'is-invalid':
+                  roleForm.get('name')?.errors &&
+                  roleForm.get('name')?.touched
+              }" style="width: 100%;" appearance="fill" class="field-fill">
+                <mat-label>Role</mat-label>
+                <input matInput placeholder="enter role name" formControlName="name">
+              </mat-form-field>
+              <p class="invalid-feedback" *ngIf="
+                  roleForm.get('name')?.touched &&
+                  roleForm.get('name')?.hasError('required')">
+                * role name is required!
+              </p>
+            </div>
+          </div>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-flat-button color="accent" [disabled]="!roleForm.valid" class="btn-accent"> {{formMode ? 'Add' : 'Update'}} </button>
+        <button mat-flat-button mat-dialog-close class="btn-cancel">Close</button>
+      </div>
+    </form>
+  </mat-dialog>
+</ng-template>  
+

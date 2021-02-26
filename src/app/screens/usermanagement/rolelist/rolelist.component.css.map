@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEI,kBAFc,CAChB,EAAE,AACC,iBAAiB,CAAC;EACjB,SAAS,EAAE,IAAI;CAChB;;AAJL,AAKI,kBALc,CAChB,EAAE,AAIC,UAAU,CAAC;EACV,SAAS,EAAE,KAAK;CACjB;;AAPL,AAQI,kBARc,CAChB,EAAE,AAOC,WAAW,CAAC;EACX,SAAS,EAAE,KAAK;CACjB;;AAVL,AAaI,kBAbc,CAYhB,EAAE,AACC,uBAAuB,CAAC;EACvB,OAAO,EAAE,IAAI;CACd;;AAGL,AAAA,iBAAiB,CAAA;EACb,KAAK,EAAE,GAAG;CACb",
+    "sources": [
+        "rolelist.component.scss"
+    ],
+    "names": [],
+    "file": "rolelist.component.css"
+}

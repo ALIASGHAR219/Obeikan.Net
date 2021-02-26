@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEM,kBAFY,CACd,EAAE,AACC,iBAAiB,CAAC;EACjB,SAAS,EAAE,IAAI;CAChB;;AAJP,AAKM,kBALY,CACd,EAAE,AAIC,UAAU,CAAC;EACV,SAAS,EAAE,KAAK;CACjB;;AAPP,AAQM,kBARY,CACd,EAAE,AAOC,WAAW,CAAC;EACX,SAAS,EAAE,KAAK;CACjB;;AAVP,AAaM,kBAbY,CAYd,EAAE,AACC,uBAAuB,CAAC;EACvB,OAAO,EAAE,IAAI;CACd;;AAUP,AAAA,iBAAiB,CAAA;EACb,KAAK,EAAE,GAAG;CACb;;CACD,AAAA,AAAA,MAAC,AAAA,EAAQ;EACP,OAAO,EAAE,eAAe;CACzB",
+    "sources": [
+        "plant-model.component.scss"
+    ],
+    "names": [],
+    "file": "plant-model.component.css"
+}

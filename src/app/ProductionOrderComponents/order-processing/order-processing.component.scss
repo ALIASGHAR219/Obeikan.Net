@@ -1,0 +1,29 @@
+.table-element-created-by-content {
+    display: flex;
+    align-items: center;
+    .img-box {
+      position: relative;
+      width: 53px;
+      height: 43px;
+      .img {
+        position: absolute;
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 35px;
+        cursor: pointer;
+      }
+    }
+    .element-text-main {
+      height: 16px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #10123d;
+    }
+  }
+  

@@ -1,0 +1,138 @@
+#process-order {
+    .content-title {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .content-top-row {
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-left: 15px;
+        padding-bottom: 20px;
+        margin-top: 0;
+       // flex-wrap: wrap;
+       &.top-row-first-filed-item{
+        padding-bottom: 15px;
+    }
+    }
+   
+    ::ng-deep .mat-form-field {
+        max-width: 255px;
+        border: none !important;
+        padding-left: 6px;
+        padding-right: 6px;
+        margin-top: 20px;
+        .mat-form-field-wrapper {
+            border: 1px solid #e8eaef;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+    }
+    .search-btn {
+        width: 40px;
+        height: 34px;
+        background: #E0E0FF;
+        border-radius: 10px;
+        border: none;
+        margin: auto 0;
+        padding-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 30px;
+    }
+    .btn-accent-big {
+        margin-left: 5px;
+        margin-top: 20px;
+        height: 50px;
+        padding-bottom: 20px;
+        padding-left: 17px;
+    }
+    .card-wrapper-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 0 25%;
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-top: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
+        .card-item {
+            width: 100%;
+            max-width: 25%;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-bottom: 24px;
+            .card {
+                background: #FFFFFF;
+                box-shadow: 2px 2px 15px rgba(5, 5, 124, 0.14);
+                border-radius: 20px;
+                padding: 20px 24px;
+                .card-title {
+                    font-weight: bold;
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: #090A9A;
+                    margin-bottom: 18px;
+                }
+                .graph-title {
+                    font-weight: bold;
+                    font-size: 13px;
+                    line-height: 20px;
+                    color: #000000;
+                    margin: 20px 0;
+                    text-align: center
+                }
+                img {
+                    display: block;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    ::ng-deep {
+        .mat-progress-bar.mat-primary .mat-progress-bar-fill::after {
+            background-color:#F4B63E;
+            height: 6px;
+            border-radius: 20px;
+        }
+        .mat-progress-bar.mat-primary .mat-progress-bar-buffer {
+            background: #E5E5E5;
+            border: 0.5px solid #DDDDDD;
+            border-radius: 20px;
+            height: 6px;
+        }
+        .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
+            background-color:#10CE9C;
+            height: 6px;
+            border-radius: 20px;
+        }
+        .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+            background: #E5E5E5;
+            border: 0.5px solid #DDDDDD;
+            border-radius: 20px;
+            height: 6px;
+        }
+        .mat-progress-bar.mat-warn .mat-progress-bar-fill::after {
+            background-color:#FF3535;
+            height: 6px;
+            border-radius: 20px;
+        }
+        .mat-progress-bar.mat-warn .mat-progress-bar-buffer {
+            background: #E5E5E5;
+            border: 0.5px solid #DDDDDD;
+            border-radius: 20px;
+            height: 6px;
+        }
+        .mat-progress-bar {
+            height: 6px;
+            margin-bottom: 2px;
+        }
+        .progress-bar-title {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 20px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+    }
+
+}

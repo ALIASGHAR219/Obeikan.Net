@@ -1,0 +1,136 @@
+
+      
+      .stripped {
+        // special stripes with linear gradient
+        background-image:
+          linear-gradient(-45deg,
+            rgba(255, 255, 255, 0.2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.2) 75%,
+            transparent 75%,
+            transparent
+          )
+        ;
+        background-size: 50px 50px;
+        background-repeat: repeat;
+      }
+
+      .active{
+        // apply animation
+        animation:loading-stripes 2s linear infinite;
+      }
+      @keyframes loading-stripes{
+        from {background-position: 0 0;}
+        to {background-position: 50px 0;}
+      }
+
+
+/* Radial Bar styling*/
+$bg-color: #34495e;
+$default-size: 96px;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+  .pie {
+    .half-circle {
+      border-color: $color;
+    }
+
+    // .left-side {
+    //   transform: rotate($progress * 3.6deg);
+    // }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+      // .right-side2 {
+      //   display: none;
+      // }
+    } @else {
+      clip: rect(auto, auto, auto, auto);
+      .right-side2 {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.pie-wrapper {
+  @include size($default-size, $default-size);
+  margin: 0 auto;
+  position: relative;
+
+  .pie {
+    @include size(100%, 100%);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .half-circle {
+      @include size(100%, 100%);
+      border: 8px solid #bdc3c7;
+      border-radius: 50%;
+      clip: rect(0, $default-size / 2, $default-size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 29px;
+    color: #000000;
+    background: transparent;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    right: 24px;
+    text-align: center;
+    top: 35px;
+    z-index: 1;
+    letter-spacing: 0px;
+    .smaller {
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 29px;
+      color: #000000;
+      margin-left: -5px;
+    }
+  }
+
+  .shadow {
+    @include size(100%, 100%);
+    border: 8px solid #bdc3c7;
+    border-radius: 50%;
+  }
+
+  &.progress-radial {
+    @include draw-progress(51, #bdc3c7);
+  }
+}
+.charts-container {
+  display: flex;
+  .charts-bg {
+    padding: 40px;
+    background-image: url('../../../assets/images/graphs/pie-bg.svg');
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+    
+    

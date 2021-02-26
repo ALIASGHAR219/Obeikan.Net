@@ -1,0 +1,214 @@
+<div class="autonomous-management-content">
+  <div class="content-top-box ">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" routerLink="/home">Home</a>
+      </li>
+    </ul>
+    <div class="title-row-flex-both-end">
+      <h1 class="main-title">Autonomous Maintanance DB</h1>
+      <div class="basic-mat-input">
+        <span class="date-label">Last 30 days</span>
+        <mat-form-field appearence="fill">
+          <!-- <mat-label>Choose date range</mat-label> -->
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate [formControl]="startDate">
+            <input matEndDate [formControl]="startDate">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker">
+             
+          </mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Dropdown -->
+  <div class="drop-down-group">
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Year</mat-label>
+        <mat-select name="Year">
+          <mat-option *ngFor="let Year of yearList" [value]="Year">
+            {{Year}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Month</mat-label>
+        <mat-select name="Month">
+          <mat-option *ngFor="let Month of monthList" [value]="Month">
+            {{Month}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Week</mat-label>
+        <mat-select name="Week">
+          <mat-option *ngFor="let Week of weekList" [value]="Week">
+            {{Week}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Day</mat-label>
+        <mat-select name="Day">
+          <mat-option *ngFor="let Day of dayList" [value]="Day">
+            {{Day}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Shift</mat-label>
+        <mat-select name="Shift">
+          <mat-option *ngFor="let Shift of shiftList" [value]="Shift">
+            {{Shift}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Machine</mat-label>
+        <mat-select name="Machine" formControlName="machine">
+          <mat-option *ngFor="let Machine of machineList" [value]="Machine">
+            {{Machine}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="menu-card-group">
+    <div class="menu-card-item">
+      <p class="title-text">Total Defects</p>
+      <p class="data-text">150</p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuGreenIconUrl" alt="{{menuGreenIconUrl}}">
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Total Defects Solved</p>
+      <p class="data-text">120</p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuGreenIconUrl" alt="{{menuGreenIconUrl}}">
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">% of Defect Solved</p>
+      <p class="data-text">82</p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuRedIconUrl" alt="{{menuRedIconUrl}}">
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-card-group">
+    <div class="menu-card-item">
+      <p class="title-text">CIL Tasks</p>
+      <p class="data-text">86</p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuGreenIconUrl" alt="{{menuGreenIconUrl}}">
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">CIL Time</p>
+      <p class="data-text">75
+        <span class="data-text small-data-text">m</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuRedIconUrl" alt="{{menuRedIconUrl}}">
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">% of Defect Solved</p>
+      <p class="data-text">75
+        <span class="data-text small-data-text">%</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuGreenIconUrl" alt="{{menuGreenIconUrl}}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"> Open Defects vs Closed Defects</div>
+      <canvas id="multiVariableChart3"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title"> Open Defects by Area</div>
+      <canvas id="multiVariableChart4"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"> % of Defect Closing</div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title"> Defects by Type</div>
+      <canvas id="myChart1"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"># of Defects Solved by Operators vs Technicians</div>
+      <canvas id="multiVariableChart1"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title">Defect Raised and Solved by Person</div>
+      <canvas id="multiVariableChart2"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"> % of CIL Adherence</div>
+      <canvas id="myChart2"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title"> % of CIL Tasks</div>
+      <canvas id="myChart3"></canvas>
+    </div>
+  </div>
+
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"> % of CIL Tasks by Operator</div>
+      <canvas id="myChart4"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title"> CIL Time by Operator</div>
+      <canvas id="myChart5"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title"> CIL Time Trend</div>
+      <canvas id="myChart6"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title">CIL Time by Machine</div>
+      <canvas id="myChart7"></canvas>
+    </div>
+  </div>
+
+
+</div>

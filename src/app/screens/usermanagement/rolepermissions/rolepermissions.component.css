@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+  /* green */
+}
+
+select.ng-invalid.ng-touched {
+  border: 2px solid red;
+  /* green */
+}
+
+.invalid-feedback {
+  color: red;
+}
+/*# sourceMappingURL=rolepermissions.component.css.map */

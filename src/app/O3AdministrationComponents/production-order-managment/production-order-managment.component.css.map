@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oCAAoC,CAAC;EACnC,WAAW,EAAE,IAAI;CAClB",
+    "sources": [
+        "production-order-managment.component.scss"
+    ],
+    "names": [],
+    "file": "production-order-managment.component.css"
+}

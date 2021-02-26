@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "production-order-management.component.scss"
+    ],
+    "names": [],
+    "file": "production-order-management.component.css"
+}

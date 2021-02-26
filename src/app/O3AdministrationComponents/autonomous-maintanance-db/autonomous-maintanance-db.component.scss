@@ -1,0 +1,134 @@
+.menu-card-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0 0 -30px;
+    .menu-card-item {
+      width: calc(33.3% - 30px);
+      margin: 0 0 0 30px;
+      position: relative;
+      display: block;
+      background: #ffffff;
+      box-shadow: 2px 2px 15px rgba(5, 5, 124, 0.14);
+      border-radius: 10px;
+      padding: 25px 30px;
+    }
+    .title-text {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 21px;
+      color: #1d252c;
+    }
+    .data-text {
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 35px;
+      color: #0f0fd1;
+      &.small-data-text {
+        font-size: 18px;
+        line-height: 21px;
+      }
+    }
+    .menu-bottom-icon {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  
+  .card-wrapper-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 25%;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .card-item {
+      width: 100%;
+      max-width: 25%;
+      padding-left: 1px;
+      padding-right: 1px;
+      margin-bottom: 24px;
+      .card {
+        background: #ffffff;
+        box-shadow: 2px 2px 15px rgba(5, 5, 124, 0.14);
+        border-radius: 20px;
+        padding: 20px 24px;
+        &:hover .card-suffix-icon {
+          display: inline-block;
+        }
+        .card-title {
+          font-weight: bold;
+          font-size: 15px;
+          line-height: 20px;
+          color: #090a9a;
+          margin-bottom: 18px;
+        }
+        .graph-title {
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 20px;
+          color: #000000;
+          margin: 20px 0;
+          text-align: center;
+        }
+        .card-suffix-icon {
+          display: none;
+          position: relative;
+          float: right;
+        }
+  
+        img {
+          display: block;
+          margin: auto;
+        }
+        &.card-group {
+          border: 1px solid #dbdce1;
+          box-shadow: none;
+          border-radius: 0px;
+        }
+      }
+      &.card-item-five {
+        max-width: 20%;
+      }
+      &.card-item-five-group {
+        max-width: 20%;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+    }
+    &.production-db {
+      flex: 0 0 20%;
+    }
+  }
+ 
+//   //new added claasess
+//   .chart-group {
+//     display: flex;
+//     flex-wrap: wrap;
+//     margin: 30px -30px 0 -30px;
+//     .chart-items {
+//       margin: 0 0 20px 30px;
+//       padding-left: 5px;
+//       padding-right: 50px;
+//       width: calc(50% - 30px);
+//       background: #ffffff;
+//       box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+//       border-radius: 20px;
+//       padding-bottom: 20px;
+//       float: left;
+//     }
+//     .chart-title {
+//       font-weight: 500;
+//       font-size: 18px;
+//       line-height: 21px;
+//       color: #1d252c;
+//       margin-top: 26px;
+//       margin-bottom: 30px;
+//     }
+//   }
+
+//   .main-title{
+//     margin: 0px;
+//   }

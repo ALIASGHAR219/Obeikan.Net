@@ -1,0 +1,121 @@
+@import "../../../assets/scss/helpers/variables";
+@import "../../../assets/scss/helpers/mixins";
+@import "../../../assets/scss/helpers/responsive";
+
+.main-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 45px;
+  @include tablet {
+    margin-bottom: 65px;
+  }
+  .top-bar-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    margin-right: 25px;
+  }
+  .top-bar-logo {
+    margin-right: 25px;
+    @include tablet {
+      margin: 0 15px 0 20px;
+    }
+    img {
+      display: block;
+    }
+  }
+  .navbar-toggler-mob {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  .search-form-btn-mob {
+    display: none;
+    @include tablet {
+      display: block;
+    }
+  }
+  .search-form {
+    position: relative;
+    @include tablet {
+      position: fixed;
+      top: 95px;
+      left: 30px;
+      right: 30px;
+      opacity: 0;
+      visibility: visible;
+      @include transition(0.4);
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    .form-control {
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 12px;
+      padding: 13px 25px 13px 45px;
+      border-radius: 35px;
+      min-width: 500px;
+      @include desktop {
+        min-width: 350px;
+      }
+      @include placeholder {
+        color: $search-form-placeholder;
+      }
+    }
+    .search-btn {
+      position: absolute;
+      top: calc(50% - 15px);
+      left: 10px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+  .top-bar-right {
+    display: flex;
+    align-items: center;
+    .mat-icon-button {
+      margin-left: 5px;
+    }
+    .notification-btn {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      .notification-dot {
+        display: block;
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        top: 8px;
+        right: 9px;
+        opacity: 0;
+        visibility: hidden;
+        @include transition(0.4);
+        svg {
+          display: block;
+        }
+      }
+      &.has-notification {
+        .notification-dot {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    .profile-btn {
+      width: 40px;
+      height: 40px;
+      margin-left: 15px;
+      img {
+        width: 100%;
+        display: block;
+        border-radius: 50%;
+      }
+    }
+  }
+}

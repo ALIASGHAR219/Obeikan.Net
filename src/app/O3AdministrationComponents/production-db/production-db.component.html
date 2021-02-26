@@ -1,0 +1,320 @@
+<div class="production-db-content">
+  <div class="content-top-box">
+    <ul class="breadcrumb">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a class="breadcrumb-link" routerLink="/home">Home</a>
+          </li>
+        <li class="breadcrumb-item">
+          <a class="breadcrumb-link" routerLink="/analytics">Analytics</a>
+        </li>
+      </ul>
+    </ul>
+    <div class="title-row-flex-both-end">
+      <h1 class="main-title">Production DB</h1>
+        <div class="basic-mat-input" style="float: right; margin-top: auto">
+          <span class="date-label">Last 30 days</span>
+          <mat-form-field appearence="fill" style="padding-left: 15px">
+            <!-- <mat-label>Choose date range</mat-label> -->
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate [formControl]="startDate" />
+              <input matEndDate [formControl]="startDate" />
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon
+                ><mat-select></mat-select
+              ></mat-icon>
+            </mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+    </div>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="drop-down-group">
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Year</mat-label>
+        <mat-select name="Year">
+          <mat-option *ngFor="let Year of yearList" [value]="Year">
+            {{ Year }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Month</mat-label>
+        <mat-select name="Month">
+          <mat-option *ngFor="let Month of monthList" [value]="Month">
+            {{ Month }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Week</mat-label>
+        <mat-select name="Week">
+          <mat-option *ngFor="let Week of weekList" [value]="Week">
+            {{ Week }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Day</mat-label>
+        <mat-select name="Day">
+          <mat-option *ngFor="let Day of dayList" [value]="Day">
+            {{ Day }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Shift</mat-label>
+        <mat-select name="Shift">
+          <mat-option *ngFor="let Shift of shiftList" [value]="Shift">
+            {{ Shift }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="drop-down-element">
+      <mat-form-field>
+        <mat-label appearance="fill" class="field-fill">Machine</mat-label>
+        <mat-select name="Machine" formControlName="machine">
+          <mat-option *ngFor="let Machine of machineList" [value]="Machine">
+            {{ Machine }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="card-wrapper-list production-db">
+    <div class="card-item card-item-five">
+      <div class="card">
+        <img src="assets/images/graphs/analytics.svg" alt="" />
+        <!-- <div class="card-suffix-icon">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.66667 0.5V2.16667H12.6583L4.46667 10.3583L5.64167 11.5333L13.8333 3.34167V6.33333H15.5V0.5H9.66667ZM13.8333 13.8333H2.16667V2.16667H8V0.5H2.16667C1.24167 0.5 0.5 1.25 0.5 2.16667V13.8333C0.5 14.2754 0.675595 14.6993 0.988155 15.0118C1.30072 15.3244 1.72464 15.5 2.16667 15.5H13.8333C14.2754 15.5 14.6993 15.3244 15.0118 15.0118C15.3244 14.6993 15.5 14.2754 15.5 13.8333V8H13.8333V13.8333Z"
+              fill="#1D252C"
+            />
+          </svg>
+        </div> -->
+        <div class="content" style="position: relative">
+          <o3-percentage-graph
+            [barProperties]="oeeAnalysis"
+          ></o3-percentage-graph>
+          <p class="graph-title">OEE Analysis</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-item card-item-five">
+      <div class="card">
+        <img src="assets/images/graphs/analytics.svg" alt="" />
+        <o3-percentage-graph
+          [barProperties]="capacityUtilizationAnalysis"
+        ></o3-percentage-graph>
+        <p class="graph-title">Capacity Utilization Analysis</p>
+      </div>
+    </div>
+    <div class="card-item card-item-five-group">
+      <div class="card card-group">
+        <img src="assets/images/graphs/analytics.svg" alt="" />
+        <o3-percentage-graph
+          [barProperties]="availabilityAnalysis"
+        ></o3-percentage-graph>
+        <p class="graph-title">Availability Analysis</p>
+      </div>
+    </div>
+    <div class="card-item card-item-five-group">
+      <div class="card card-group">
+        <img src="assets/images/graphs/analytics.svg" alt="" />
+        <o3-percentage-graph
+          [barProperties]="performanceAnalysis"
+        ></o3-percentage-graph>
+        <p class="graph-title">Performance Analysis</p>
+      </div>
+    </div>
+    <div class="card-item card-item-five-group">
+      <div class="card card-group">
+        <img src="assets/images/graphs/analytics.svg" alt="" />
+        <o3-percentage-graph
+          [barProperties]="qualityAnalysis"
+        ></o3-percentage-graph>
+        <p class="graph-title merge-style">Quality Analysis</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title">Open Defects vs Closed Defects</div>
+      <canvas id="OEETrend"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title">Open Defects by Area</div>
+      <canvas id="VolumeOutput"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title">OEE Loses</div>
+      <canvas id="OEELoses"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title">Output Loses</div>
+      <canvas id="OutputLoses"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-group">
+    <div class="chart-items">
+      <div class="chart-title">No of Production Orders Completed vs Total</div>
+      <canvas id="POCompleted"></canvas>
+    </div>
+    <div class="chart-items">
+      <div class="chart-title">% of Production Orders Closed On-Time</div>
+      <canvas id="POClosed"></canvas>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="menu-card-group">
+    <div class="menu-card-item">
+      <p class="title-text">Total Output</p>
+      <p class="data-text">
+        20
+        <span class="data-text small-data-text">M</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuRedIconUrl" alt="{{ menuRedIconUrl }}" />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Total Available Hours</p>
+      <p class="data-text">
+        1000
+        <span class="data-text small-data-text">hrs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Total Planned Hours</p>
+      <p class="data-text">
+        950
+        <span class="data-text small-data-text">hrs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-card-group">
+    <div class="menu-card-item">
+      <p class="title-text">Total Running Hours</p>
+      <p class="data-text">
+        650
+        <span class="data-text small-data-text">hrs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Total Waste</p>
+      <p class="data-text">
+        500
+        <span class="data-text small-data-text">k</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Total CU</p>
+      <p class="data-text">
+        95
+        <span class="data-text small-data-text">%</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuRedIconUrl" alt="{{ menuRedIconUrl }}" />
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-card-group">
+    <div class="menu-card-item">
+      <p class="title-text">Shutdown Hours</p>
+      <p class="data-text">
+        50
+        <span class="data-text small-data-text">hrs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Average Running Speed</p>
+      <p class="data-text">
+        8432
+        <span class="data-text small-data-text">u/hrs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img class="img" [src]="menuRedIconUrl" alt="{{ menuRedIconUrl }}" />
+      </div>
+    </div>
+    <div class="menu-card-item">
+      <p class="title-text">Number of Jobs</p>
+      <p class="data-text">
+        150
+        <span class="data-text small-data-text">jobs</span>
+      </p>
+      <div class="menu-bottom-icon">
+        <img
+          class="img"
+          [src]="menuGreenIconUrl"
+          alt="{{ menuGreenIconUrl }}"
+        />
+      </div>
+    </div>
+  </div>
+  <div></div>
+</div>
